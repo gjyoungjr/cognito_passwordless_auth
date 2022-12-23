@@ -1,0 +1,41 @@
+Resources:
+  UserPool:
+    Type: "AWS::Cognito::UserPool"
+    Properties:
+      UserPoolName: ${self:provider.stackName}-user-pool
+      Schema:
+        - Name: name
+          AttributeDataType: String
+          Mutable: true
+          Required: true
+        - Name: email
+          AttributeDataType: String
+          Mutable: true
+          Required: true
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+          RequireLowercase: false
+          RequireNumbers: false
+          RequireSymbols: false
+          RequireUppercase: false
+      UsernameAttributes:
+        - email
+      MfaConfiguration: "OFF"
+      LambdaConfig:
+        CreateAuthChallenge: !GetAtt CreateAuthChallengeLambdaFunction.Arn
+        DefineAuthChallenge: !GetAtt DefineAuthChallengeLambdaFunction.Arn
+        VerifyAuthChallengeResponse: !GetAtt VerifyAuthChallengeLambdaFunction.Arn
+        PreSignUp: !GetAtt PreSignUpTriggerLambdaFunction.Arn
+        # PostAuthentication: !GetAtt PostAuthentication.Arn
+
+      # DependsOn: CreateAuthChallenge
+
+  UserPoolClient:
+    Type: "AWS::Cognito::UserPoolClient"
+    Properties:
+      ClientName: email-auth-client
+      GenerateSecret: false
+      UserPoolId: !Ref UserPool
+      ExplicitAuthFlows:
+        - CUSTOM_AUTH_FLOW_ONLY

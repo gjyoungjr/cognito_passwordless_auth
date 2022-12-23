@@ -1,0 +1,55 @@
+CreateAuthChallenge:
+  handler: lambda/createAuthChallenge.handler
+  name: ${self:provider.stackName}-createAuthChallenge
+  layers:
+    - { Ref: MainLambdaLayer } # requires suffix 'LambdaLayer' AWS specific naming convention
+  iamRoleStatementsName: ${self:provider.stackName}-createAuthChallengeRole
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - ses:SendEmail
+      Resource: "*"
+    - Effect: Allow
+      Action:
+        - logs:*
+      Resource:
+        - "*"
+
+DefineAuthChallenge:
+  handler: lambda/defineAuthChallenge.handler
+  name: ${self:provider.stackName}-defineAuthChallenge
+  layers:
+    - { Ref: MainLambdaLayer } # requires suffix 'LambdaLayer' AWS specific naming convention
+  iamRoleStatementsName: ${self:provider.stackName}-defineAuthChallengeRole
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:*
+      Resource:
+        - "*"
+
+VerifyAuthChallenge:
+  handler: lambda/verifyAuthChallenge.handler
+  name: ${self:provider.stackName}-verifyAuthChallenge
+  layers:
+    - { Ref: MainLambdaLayer } # requires suffix 'LambdaLayer' AWS specific naming convention
+  iamRoleStatementsName: ${self:provider.stackName}-verifyAuthChallengeRole
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:*
+      Resource:
+        - "*"
+
+PreSignUpTrigger:
+  handler: lambda/preSignUp.handler
+  name: ${self:provider.stackName}-preSignUp
+  layers:
+    - { Ref: MainLambdaLayer } # requires suffix 'LambdaLayer' AWS specific naming convention
+  iamRoleStatementsName: ${self:provider.stackName}-preSignUpRole
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - logs:*
+      Resource:
+        - "*"

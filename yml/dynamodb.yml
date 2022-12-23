@@ -1,0 +1,14 @@
+Resources:
+  OTPCodesTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: ${self:provider.stackName}-otp-codes-tbl
+      AttributeDefinitions:
+        - AttributeName: "code"
+          AttributeType: "N"
+      KeySchema:
+        - AttributeName: "code"
+          KeyType: "HASH"
+      ProvisionedThroughput:
+        ReadCapacityUnits: 1
+        WriteCapacityUnits: 1

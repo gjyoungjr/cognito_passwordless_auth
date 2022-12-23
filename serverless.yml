@@ -1,0 +1,38 @@
+# Passwordless Email Sign In
+# This stack contains all in the infra to create a password less email sign in application.
+service: passwordless-email
+
+frameworkVersion: "3"
+
+# Global configs
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: us-east-1
+  stackName: passwordless-email-${sls:stage}
+
+# Allow usage of environment variables
+useDotenv: true
+
+# Serverless plugins
+plugins:
+  - serverless-offline
+  - serverless-esbuild
+  - serverless-iam-roles-per-function
+
+# Lambda Layers
+layers:
+  Main:
+    path: layer
+    name: ${self:provider.stackName}-lambda-layer
+
+# Lambda functions
+functions:
+  - ${file(yml/functions.yml)}
+
+# AWS Resources
+resources:
+  - ${file(yml/dynamodb.yml)}
+  - ${file(yml/cognito.yml)}
+  - ${file(yml/permissions.yml)}
