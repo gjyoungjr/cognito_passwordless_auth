@@ -35,6 +35,7 @@
       <ul>
         <li><a href="#prerequisites">Prerequisites</a></li>
         <li><a href="#installation">Installation</a></li>
+        <li><a href="#deploy">Deployment</a></li>
       </ul>
     </li>
     <li><a href="#license">License</a></li>
@@ -51,7 +52,7 @@ This project contains a passwordless authenticator app that was built using Amaz
 of using a one-time login codes such as :
 
 - Prevents identity theft by making sure that a captured username/password pair cannot be used a second time
-- Users does not need to worry about remembering their passwords
+- Users do not need to worry about remembering their passwords
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
