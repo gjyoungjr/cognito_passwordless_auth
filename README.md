@@ -39,7 +39,6 @@
       </ul>
     </li>
     <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
  
   </ol>
 </details>
@@ -122,12 +121,3 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- CONTACT -->
-
-## Contact
-
-Gilbert Young Jr - [@your_twitter](https://twitter.com/gjyoungjr) - gilbertjyoungjr@gmail.com.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
