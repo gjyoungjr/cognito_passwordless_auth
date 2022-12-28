@@ -100,9 +100,15 @@ The below steps explains how to install and set up the application.
     ```bash
     cd web-app/authenticator
    ```
-5. Initialize Amplify and enter your AWS Credentials (AWS Access Key ID & Secret Access Key)
+5. Initialize Amplify and enter your AWS Credentials (AWS Access Key ID & Secret Access Key). You can follow this [guide](https://docs.amplify.aws/cli/start/install/#option-2-follow-the-instructions) to get more details regarding 
+    setting up Amplify. 
     ```bash
     amplify init
+    ```
+### Deploy 
+1. Deploy Stack to AWS 
+    ```bash 
+    npm run deploy 
     ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
